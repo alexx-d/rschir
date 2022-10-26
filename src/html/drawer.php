@@ -29,7 +29,7 @@ if(isset($_GET["num"])){
 
 echo "num = $num<br/>";
 
-if (!empty($num)) {
+if (is_numeric($num)) {
 
     if ($num > 40000000) {
         invalid_request();
