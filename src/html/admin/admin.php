@@ -1,7 +1,6 @@
 <html lang="en">
 <head>
     <title>Hello page</title>
-    <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
 <h1>Управление заказами</h1>
