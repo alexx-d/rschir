@@ -1384,3 +1384,5 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Fri Nov 11 11:15:43.534849 2022] [dbd:crit] [pid 21] (20014)Internal error (specific information not available): AH00636: child init failed!
 [Fri Nov 11 11:41:58.386107 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 11 11:42:09.174151 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.54 (Debian) PHP/8.1.12 configured -- resuming normal operations
+[Fri Nov 11 11:42:09.174459 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
