@@ -43,7 +43,7 @@ switch ($method) {
     case 'DELETE':
         if ($type === 'orders'){
             if(isset($id)){
-                deletePost($connect, $id);
+                deleteOrder($connect, $id);
             }
         }
         break;

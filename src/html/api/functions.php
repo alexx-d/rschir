@@ -32,22 +32,24 @@ function addOrder($connection, $data){
             "status" => false,
             "message" => 'Some data is not filled'
         ];
-    
+
         echo json_encode($res);
         return;
     }
+    else{
+        $name = $data['name'];
+        $order = $data['order'];
+        $order = $connection->query("INSERT INTO orders VALUE (NULL, '$name', '$order')");
 
-    $name = $data['name'];
-    $order = $data['order'];
-    $order = $connection->query("INSERT INTO orders VALUE (NULL, '$name', '$order')");
+        http_response_code(201);
+        $res = [
+            "status" => true,
+            "orderID" => mysqli_insert_id($connection)
+        ];
 
-    http_response_code(201);
-    $res = [
-        "status" => true,
-        "orderID" => mysqli_insert_id($connection)
-    ];
-
-    echo json_encode($res);
+        echo json_encode($res);
+    }
+    
 }
 
 function updateOrder($connection, $id, $data){
@@ -75,12 +77,14 @@ function updateOrder($connection, $id, $data){
     echo json_encode($res);
 }
 
-function deletePost($connection, $id){
-    $connection->query("DELETE FROM orders WHERE orderID=$id");
+function deleteOrder($connection, $id){
+    $id = intval($id);
+    $connection->query("DELETE FROM `orders` WHERE `orders`.`orderID` = '$id'");
     http_response_code(200);
     $res = [
         "status" => true,
-        "message" => 'Order is deleted'
+        "message" => 'Order is deleted',
+        "orderID" => $id
     ];
 
     echo json_encode($res);
