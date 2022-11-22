@@ -45,9 +45,11 @@ switch ($method) {
             if(isset($id)){
                 deleteOrder($connect, $id);
             }
+        } else if ($type === 'files'){
+            if(isset($id)){
+                deleteFile($connect, $id);
+            }
         }
         break;
 }
-
-
 

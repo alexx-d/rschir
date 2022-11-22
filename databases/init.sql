@@ -18,3 +18,11 @@ INSERT INTO orders VALUE (NULL, 'Николай', 'Набор Лего');
 
 CREATE TABLE IF NOT EXISTS users (user varchar(191) not null, passwd char(191), primary key (user));
 INSERT INTO users VALUE ('admin', '{SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g=');
+
+CREATE TABLE IF NOT EXISTS uploaded_files (
+    id bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(64) NOT NULL,
+    type varchar(64) NOT NULL,
+    size int NOT NULL,
+    upload_date datetime NOT NULL
+);

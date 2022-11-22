@@ -89,3 +89,20 @@ function deleteOrder($connection, $id){
 
     echo json_encode($res);
 }
+
+function deleteFile($connection, $id){
+    $id = intval($id);
+    $result = $connection->query("SELECT name FROM `uploaded_files` WHERE `uploaded_files`.`id` = '$id'");
+    $result = mysqli_fetch_assoc($result);
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/download/' . $result['name'])){
+        unlink($_SERVER['DOCUMENT_ROOT'] . '/download/' . $result['name']);
+    };
+    $connection->query("DELETE FROM `uploaded_files` WHERE `uploaded_files`.`id` = '$id'");
+    http_response_code(200);
+    $res = [
+        "status" => true,
+        "message" => 'File is deleted',
+        "fileID" => $id
+    ];
+    echo json_encode($res);
+}
