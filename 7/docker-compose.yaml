@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  apache:
+    container_name: server
+    build: ./apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/html:/var/www/html
+      - ./cfg/php.ini:/usr/local/etc/php/conf.d/php.ini
+  
+  db:
+    image: mysql:latest
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - db_volume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "4000:3306"
+
+volumes:
+  db_volume:
